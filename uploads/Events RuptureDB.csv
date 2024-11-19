@@ -1,0 +1,4 @@
+﻿ID,EventName,EpicenterLongitude,EpicenterLatitude,Magnitude,ModelDepth,StrikeAzimuth,DipAngle,RakeAngle,FaultMechanism
+1,2017Jul06_M6.5_4KM,124.705,11.127,6.5,4,142,69,-5,strike-slip
+2,2020Jan05_M5.4_10KM,124.55,11.32,5.4,10,145,80,-6,strike-slip
+3,2023Jan15_M4.7_1KM,124.54,11.33,4.7,1,140,83,-23,strike-slip

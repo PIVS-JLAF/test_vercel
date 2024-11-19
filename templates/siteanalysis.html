@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculate Rupture and Distance</title>
+    <title>Upload File</title>
     <!-- Google Fonts for Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
@@ -84,7 +84,7 @@
     {% include "navbar.html" %}
 
     <main class="container my-4">
-        <h1>Welcome to the Strong Motion Analysis App</h1>
+        <h1>Strong-Motion Site Analysis App</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
@@ -95,11 +95,11 @@
     <br>
 
     <div class="container">
-        <h1>Upload Rupture File</h1>
-        <form action="/index" method="POST" enctype="multipart/form-data" onsubmit="showLoader()">
+        <h1>Upload Input Files</h1>
+        <form action="/siteanalysis" method="POST" enctype="multipart/form-data" onsubmit="showLoader()">
             <div class="mb-3">
-                <label for="rupture_file" class="form-label">Select a CSV File:</label>
-                <input type="file" id="rupture_file" name="rupture_file" accept=".csv" class="form-control" required>
+                <label for="analysis_data" class="form-label">Select a CSV File:</label>
+                <input type="file" id="analysis_data" name="analysis_data" accept=".csv" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="sm_file" class="form-label">Select Strong Motion File:</label>
