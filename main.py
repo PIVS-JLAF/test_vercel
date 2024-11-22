@@ -23,6 +23,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 if not os.path.exists(EXPORT_FOLDER):
     os.makedirs(EXPORT_FOLDER)
 
+# Custom Functions
 def Verification(EVENTdf, SMdf):
     errors = []
     
@@ -79,9 +80,12 @@ def RuptureCalculate(EVENTdf, SMdf):
     
     return output_file
         
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 @app.route('/index', methods=['GET', 'POST'])
-def home():
+def param_calc():
     if request.method == 'POST':
         rupture_file = request.files['rupture_file']
         sm_file = request.files['sm_file']
@@ -90,12 +94,8 @@ def home():
         rupture_file.save(rupture_file_filepath)
         sm_file_filepath = os.path.join(app.config['UPLOAD_FOLDER'], sm_file.filename)
         sm_file.save(sm_file_filepath)
-        
-        print(rupture_file_filepath)
-        print(sm_file)
-        
+    
         try:
-        
             errors = Verification(rupture_file_filepath, sm_file_filepath)
 
             if errors:
@@ -103,16 +103,12 @@ def home():
             
             EventDF = pd.read_csv(rupture_file_filepath)
             StrongMotionDF = pd.read_csv(sm_file_filepath)
-            
             output_path = RuptureCalculate(EventDF, StrongMotionDF)
-            
             flash(f"File processed successfully! Exported to {output_path}")
             return redirect(url_for('download', filename="Summary.csv"))
         except Exception as e:
-            flash(f"An error occurred while processing the file :) {str(e)}")
-            
+            flash(f"An error occurred while processing the file :) {str(e)}")  
         return redirect(request.url)
-
     return render_template('index.html')
 
 
@@ -157,6 +153,4 @@ def download_file(filename):
 if __name__ == "__main__":
     # app.run(debug=True)
     app.run(host='0.0.0.0', port=5000)
-    
-    
 
